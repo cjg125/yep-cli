@@ -31,7 +31,11 @@
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "download-git-repo": "^0.2.1",
-    "inquirer": "^1.2.1"
+    "inquirer": "^1.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "koa": "^1.2.4",
+    "koa-static": "^2.0.0",
+    "nodemon": "^1.11.0"
+  }
 }

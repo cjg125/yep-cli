@@ -18,6 +18,9 @@ program
   })
   .parse(process.argv)
 var pid = process.pid
+
+
+
 nodemon({
   script: path.resolve(__dirname, '..', 'lib'),
   ext: 'html',
@@ -26,11 +29,9 @@ nodemon({
     "template"
   ]
 }).on('start', function() {
-  // log('App has started')
   log('App listening on port ' + port)
 }).on('restart', function(files) {
   if (!files) return
-  log('pid (' + pid + ' ' + process.pid + ')')
   log('App restarted due to ' + files)
 }).on('quit', function() {
   // process.exit(0)

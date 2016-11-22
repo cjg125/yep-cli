@@ -11,9 +11,11 @@ program
   .allowUnknownOption()
   .on('--help', function() {
     console.log('  Examples:')
-    console.log(chalk.gray('    #  add a template'))
+    console.log(chalk.gray('    # github template'))
     console.log('    $ yep set template-name github:owner/name  or simply owner/name')
+    console.log(chalk.gray('    # gitlab template'))
     console.log('    $ yep set template-name gitlab:owner/name')
+    console.log(chalk.gray('    # custom template'))
     console.log('    $ yep set template-name gitlab:custom.com:owner/name')
     console.log(chalk.gray('    # display template list'))
     console.log('    $ yep set -l')
@@ -24,8 +26,6 @@ program
   .parse(process.argv)
 
 function help() {
-  console.log(__dirname)
-  console.log(process.cwd())
   return program.help()
 }
 

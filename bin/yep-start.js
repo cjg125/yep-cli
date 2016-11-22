@@ -17,8 +17,6 @@ program
     console.log()
   })
   .parse(process.argv)
-var pid = process.pid
-
 
 
 nodemon({
@@ -26,7 +24,7 @@ nodemon({
   ext: 'html',
   args: process.argv.slice(2),
   "watch": [
-    "template"
+    "html"
   ]
 }).on('start', function() {
   log('App listening on port ' + port)
@@ -34,8 +32,9 @@ nodemon({
   if (!files) return
   log('App restarted due to ' + files)
 }).on('quit', function() {
-  // process.exit(0)
   process.kill(process.pid, 'SIGUSR2')
+
+  // process.exit(0)
 }).on('log', function(data) {
   // log(data.message)
 })

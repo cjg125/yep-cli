@@ -2,6 +2,5 @@
   "pc": "gitlab:git.dh.sogou-inc.com:fe/template-pc",
   "h5": "gitlab:git.dh.sogou-inc.com:fe/template-h5",
   "zt": "gitlab:git.dh.sogou-inc.com:fe/template-zt",
-  "fe2": "gitlab:git.dh.sogou-inc.com:fe/fe2",
-  "vue": "vuejs-templates/webpack-simple"
+  "fe2": "gitlab:git.dh.sogou-inc.com:fe/fe2"
 }

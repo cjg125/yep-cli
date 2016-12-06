@@ -4,7 +4,6 @@ const program = require('commander')
 const chalk = require('chalk')
 const nodemon = require('nodemon')
 const path = require('path')
-const log = require('../lib/log')
 const port = Number.parseInt(process.argv[2]) || 8888
 
 program
@@ -22,19 +21,20 @@ program
 nodemon({
   script: path.resolve(__dirname, '..', 'lib'),
   ext: 'html',
+  nodeArgs: '--harmony',
   args: process.argv.slice(2),
   "watch": [
     "html"
   ]
 }).on('start', function() {
-  log('App listening on port ' + port)
+  console.log('App listening on port ' + port)
 }).on('restart', function(files) {
   if (!files) return
-  log('App restarted due to ' + files)
+  console.log('App restarted due to ' + files)
 }).on('quit', function() {
   process.kill(process.pid, 'SIGUSR2')
 
   // process.exit(0)
 }).on('log', function(data) {
-  // log(data.message)
+  // console.log(data.message)
 })

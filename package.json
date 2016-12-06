@@ -25,18 +25,23 @@
   },
   "homepage": "https://github.com/cjg125/yep-cli",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=7.0.0"
   },
   "dependencies": {
-    "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "download-git-repo": "^0.2.1",
+    "expose-loader": "^0.7.1",
     "inquirer": "^1.2.2",
-    "koa": "^1.2.4",
-    "koa-simple-nunjucks": "^1.0.2",
-    "koa-simple-sass": "^1.0.0",
-    "koa-static": "^2.0.0",
-    "koa-trie-router": "^1.1.0",
-    "nodemon": "^1.11.0"
+    "json-loader": "^0.5.4",
+    "koa": "next",
+    "koa-compose": "next",
+    "koa-router": "next",
+    "koa-static": "next",
+    "koa2-nunjucks": "^1.1.1",
+    "koa2-sass": "^1.1.0",
+    "koa2-webpack": "^1.0.1",
+    "nodemon": "^1.11.0",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.13.3"
   }
 }

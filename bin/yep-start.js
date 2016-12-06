@@ -3,7 +3,7 @@
 const program = require('commander')
 const chalk = require('chalk')
 const nodemon = require('nodemon')
-const path = require('path')
+const { resolve } = require('path')
 const port = Number.parseInt(process.argv[2]) || 8888
 
 program
@@ -17,15 +17,18 @@ program
   })
   .parse(process.argv)
 
-
 nodemon({
-  script: path.resolve(__dirname, '..', 'lib'),
-  ext: 'html',
+  script: resolve(__dirname, '..', 'lib'),
+  ext: 'js',
   nodeArgs: '--harmony',
   args: process.argv.slice(2),
   "watch": [
-    "html"
-  ]
+    resolve("./app.config.js"),
+    resolve("./html/data/")
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
 }).on('start', function() {
   console.log('App listening on port ' + port)
 }).on('restart', function(files) {

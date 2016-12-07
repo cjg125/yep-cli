@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-const path = require('path')
+const { join } = require('path')
 const fs = require('fs')
 
 const program = require('commander')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
 const download = require('download-git-repo')
-const template = require('../lib/template')
+const template = require('../lib/tmpl.config')
 
 program
   .option('-c, --clone', 'use git clone')
@@ -35,7 +35,7 @@ inquirer.prompt([{
       return 'Please enter a project name'
     }
     return new Promise((resolve, reject) => {
-      fs.stat(path.join(dirname, input), (err, stats) => {
+      fs.stat(join(dirname, input), (err, stats) => {
         // stats.isDirectory()
         return resolve(err ? true : 'Project already exists')
       })
@@ -62,7 +62,7 @@ function chooseTemplate() {
 }
 
 function generate(options) {
-  let name = path.join(dirname, options.name)
+  let name = join(dirname, options.name)
   let tpl = template[options.template]
   let ui = installation()
 

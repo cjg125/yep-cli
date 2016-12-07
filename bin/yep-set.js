@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const path = require('path') 
+const { resolve } = require('path') 
 const program = require('commander')
 const chalk = require('chalk')
 program
@@ -31,7 +31,7 @@ function help() {
 
 function shell() {
   let args = program.args
-  let template = require('../lib/template.json')
+  let template = require('../lib/tmpl.config')
 
   // list
   if (program.list) {
@@ -62,7 +62,7 @@ shell()
 
 function updateConfigFile(data) {
   let str = JSON.stringify(data, null, 2)
-  let dir = path.resolve(__dirname, '../lib/template.json')
+  let dir = resolve(__dirname, '../lib/tmpl.config.json')
   fs.writeFile(dir, str, (err) => {
     if (err) {
       console.log(chalk.red(err))

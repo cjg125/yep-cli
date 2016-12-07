@@ -1,6 +1,6 @@
 {
   "name": "yep-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple CLI for scaffolding",
   "main": "lib/index.js",
   "scripts": {
@@ -29,8 +29,15 @@
   },
   "dependencies": {
     "commander": "^2.9.0",
+    "del": "^2.2.2",
     "download-git-repo": "^0.2.1",
     "expose-loader": "^0.7.1",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-data": "^1.2.1",
+    "gulp-nunjucks": "^2.3.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
     "inquirer": "^1.2.2",
     "json-loader": "^0.5.4",
     "koa": "next",
@@ -42,6 +49,7 @@
     "koa2-webpack": "^1.0.1",
     "nodemon": "^1.11.0",
     "raw-loader": "^0.5.1",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webpack-stream": "^3.2.0"
   }
 }

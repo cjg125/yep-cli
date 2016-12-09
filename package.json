@@ -1,6 +1,6 @@
 {
   "name": "yep-cli",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Simple CLI for scaffolding",
   "main": "lib/index.js",
   "scripts": {
@@ -48,6 +48,7 @@
     "koa2-sass": "^1.1.0",
     "koa2-webpack": "^1.0.1",
     "nodemon": "^1.11.0",
+    "ora": "^0.3.0",
     "raw-loader": "^0.5.1",
     "webpack": "^1.13.3",
     "webpack-stream": "^3.2.0"

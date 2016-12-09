@@ -7,6 +7,7 @@ const program = require('commander')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
 const download = require('download-git-repo')
+const ora = require('ora')
 const tmpls = require('../lib/tmpl.config')
 
 program
@@ -61,40 +62,31 @@ function templateName() {
 }
 
 function generate(opts) {
-  let ui = installation()
+  const spinner = ora('Installing')
+  const fail = function(message = '') {
+    spinner.color = 'magenta'
+    spinner.text = message
+    spinner.fail()
+  }
+  const succeed = function() {
+    spinner.color = 'green'
+    spinner.succeed()
+  }
+  spinner.start()
+
+  // download-git-repo bug 内部没有判断exec结果
+  if (/^((github|gitlab|bitbucket):)?((.+):)?([^/]+)\/([^#]+)(#(.+))?$/.exec(opts.tpl) == null) {
+    fail('Invalid Template: ' + opts.tpl)
+    return
+  }
   download(opts.tpl, opts.name, { clone: clone }, (err) => {
     if (err) {
-      ui.updateBottomBar(chalk.red(err))
+      fail(err.message)
     } else {
-      ui.updateBottomBar('Installation done!')
+      succeed()
     }
     process.exit()
   })
-}
-
-function installation() {
-  let loader = [
-    '/ Installing',
-    '| Installing',
-    '\\ Installing',
-    '- Installing'
-  ]
-
-  let i = 4
-  let ui = new inquirer.ui.BottomBar({
-    bottomBar: loader[i % 4]
-  })
-
-  let t = setInterval(function() {
-    ui.updateBottomBar(loader[i++ % 4])
-  }, 300)
-
-  return {
-    updateBottomBar: function(...args) {
-      clearInterval(t)
-      ui.updateBottomBar.apply(ui, args)
-    }
-  }
 }
 
 

@@ -106,3 +106,8 @@ $ yep start
     $ yep build
     ```
 
+## ChangeLog
+
+  - 0.2.0 ( 2016-12-19 )
+    - proxy支持
+    - 直接默认浏览器打开项目地址

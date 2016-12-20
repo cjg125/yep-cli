@@ -28,6 +28,7 @@
     "node": ">=7.0.0"
   },
   "dependencies": {
+    "co": "^4.6.0",
     "commander": "^2.9.0",
     "del": "^2.2.2",
     "download-git-repo": "^0.2.1",

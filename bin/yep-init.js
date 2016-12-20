@@ -9,6 +9,8 @@ const inquirer = require('inquirer')
 const download = require('download-git-repo')
 const ora = require('ora')
 const tmpls = require('../lib/tmpl.config')
+const co = require('co')
+
 
 program
   .usage('[template-name] [project-name] [options]')
@@ -91,14 +93,14 @@ function generate(opts) {
 
 
 
-async function co() {
+co(function*() {
   let args = program.args
 
   let tpl, name
 
   if (args.length == 0) {
-    name = await projectName()
-    tpl = await templateName()
+    name = yield projectName()
+    tpl = yield templateName()
     name = name.value
     tpl = tpl.value
   } else {
@@ -109,7 +111,7 @@ async function co() {
   tpl = tmpls[tpl] || tpl
   name = join(dirname, name)
 
-  let message = await exist(name, false)
+  let message = yield exist(name, false)
 
   // console.log(tpl)
   // console.log(name)
@@ -125,6 +127,4 @@ async function co() {
     tpl: tpl,
     name: name
   })
-
-}
-co()
+})
